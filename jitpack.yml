@@ -1,6 +1,5 @@
 jdk:
-  - openjdk11
-before_install:
-  - ./gradlew clean publishToMavenLocal
+  - openjdk17
+
 install:
-   - ./gradlew clean install 
+  - ./gradlew clean build publishToMavenLocal -Pgroup=com.github.[senin-kullanici-adin] -Pversion=$JITPACK_TAG
