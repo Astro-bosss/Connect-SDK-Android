@@ -4,9 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        // Modern ve stabil bir Android Gradle Plugin versiyonu
         classpath 'com.android.tools.build:gradle:8.2.1'
-        // 'android-maven-gradle-plugin' artık kullanılmıyor, bu satırı siliyoruz.
     }
 }
 
@@ -21,7 +19,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
-    namespace 'com.connectsdk.android' // Namespace zorunlu
+    namespace 'com.connectsdk.android'
     compileSdkVersion 34
     buildToolsVersion '34.0.0'
 
@@ -40,10 +38,9 @@ android {
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
-            // Orijinal kaynak setlerini koruyalım
             java.srcDirs = [
                     'src',
-                    'core/src', // Bu satırlar aslında alt modül varken gereksizdir, ama zararı yok
+                    'core/src',
                     'modules/google_cast/src',
                     'modules/firetv/src',
             ]
@@ -85,23 +82,17 @@ dependencies {
     implementation project(':core')
 
     // Orijinal bağımlılıkları koruyalım, versiyonları güncelleyelim
-    implementation 'androidx.mediarouter:mediarouter:1.6.0'
-    implementation 'androidx.annotation:annotation:1.6.0'
+    implementation 'androidx.mediarouter:mediarouter:1.8.1'
+    implementation 'androidx.annotation:annotation:1.9.1'
     implementation 'androidx.preference:preference:1.2.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.googlecode.plist:dd-plist:1.23'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.googlecode.plist:dd-plist:1.28'
     implementation 'com.nimbusds:srp6a:2.1.0'
     implementation 'net.i2p.crypto:eddsa:0.3.0'
-    implementation 'com.google.android.gms:play-services-cast-framework:21.4.0'
+    implementation 'com.google.android.gms:play-services-cast-framework:22.1.0'
+    implementation 'org.jmdns:jmdns:3.6.2'
 
     // JAR dosyalarını libs klasöründen okumaya devam etsin
     implementation files('core/libs/lgcast-android-lib.jar')
     implementation fileTree(dir: 'modules/firetv/libs', include: ['*.jar'])
-
-    // Test bağımlılıklarını şimdilik yoruma alalım
-    // testImplementation 'junit:junit:4.12'
-    // ...
 }
-
-// Bu satır, artık kullanılmayan maven-push.gradle dosyasını yüklemeye çalışıyor. Silelim.
-// apply from: 'maven-push.gradle'
