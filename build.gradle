@@ -82,8 +82,7 @@ android {
 }
 
 dependencies {
-    // Bu proje, kendi içindeki alt modül olan Core projesine bağlanmalı.
-    implementation project(':Connect-SDK-Android-Core') // Hata burada!!
+    implementation project(':core')
 
     // Orijinal bağımlılıkları koruyalım, versiyonları güncelleyelim
     implementation 'androidx.mediarouter:mediarouter:1.6.0'
