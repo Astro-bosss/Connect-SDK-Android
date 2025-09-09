@@ -17,6 +17,8 @@ allprojects {
 
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
+group = project.findProperty("group") ?: 'com.github.Astro-bosss'
+version = project.findProperty("version") ?: 'v3.0.2-SNAPSHOT'
 
 android {
     namespace 'com.connectsdk.android'
