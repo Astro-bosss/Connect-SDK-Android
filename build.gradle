@@ -97,6 +97,8 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:4.11.0'
     testImplementation 'org.robolectric:robolectric:4.10.3'
     testImplementation 'androidx.test:core:1.5.0'
+    testImplementation 'org.powermock:powermock-api-mockito:1.6.2'
+    testImplementation 'xmlunit:xmlunit:1.6'
 
     // JAR dosyalarını libs klasöründen okumaya devam etsin
     implementation files('core/libs/lgcast-android-lib.jar')
