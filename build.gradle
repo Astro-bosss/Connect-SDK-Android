@@ -17,12 +17,8 @@ allprojects {
     }
 }
 
-// Bu eklentiler artık kullanılmıyor veya farklı şekilde yönetiliyor.
-// apply plugin: 'jacoco'
-// apply plugin: 'com.github.dcendents.android-maven'
-// group='com.github.ConnectSDK'
-
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     namespace 'com.connectsdk.android' // Namespace zorunlu
