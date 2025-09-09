@@ -91,6 +91,8 @@ dependencies {
     implementation 'net.i2p.crypto:eddsa:0.3.0'
     implementation 'com.google.android.gms:play-services-cast-framework:22.1.0'
     implementation 'org.jmdns:jmdns:3.6.2'
+    implementation 'org.java-websocket:Java-WebSocket:1.5.7'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'
 
     // JAR dosyalarını libs klasöründen okumaya devam etsin
     implementation files('core/libs/lgcast-android-lib.jar')
