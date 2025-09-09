@@ -10,3 +10,6 @@
 	path = modules/firetv
 	url = https://github.com/ConnectSDK/Connect-SDK-Android-FireTV.git
     branch = master
+[submodule "Connect-SDK-Android-Core"]
+	path = Connect-SDK-Android-Core
+	url = https://github.com/Astro-bosss/Connect-SDK-Android-Core.git
