@@ -106,17 +106,3 @@ dependencies {
     implementation files('core/libs/lgcast-android-lib.jar')
     implementation fileTree(dir: 'modules/firetv/libs', include: ['*.jar'])
 }
-
-// Ana/build.gradle dosyasının en sonuna ekle
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = project.findProperty("group") ?: 'com.github.Astro-bosss'
-                artifactId = 'connect-sdk-android'
-                version = project.findProperty("version") ?: 'v3.0.3-SNAPSHOT'
-            }
-        }
-    }
-}
