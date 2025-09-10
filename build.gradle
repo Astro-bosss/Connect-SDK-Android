@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.1'
+        classpath "com.android.tools.build:gradle:8.2.2"
     }
 }
 
@@ -15,94 +15,7 @@ allprojects {
     }
 }
 
-apply plugin: 'com.android.library'
-apply plugin: 'maven-publish'
-group = project.findProperty("group") ?: 'com.github.Astro-bosss'
-version = project.findProperty("version") ?: 'v3.0.2-SNAPSHOT'
 
-android {
-    namespace 'com.connectsdk.android'
-    compileSdkVersion 34
-    buildToolsVersion '34.0.0'
-
-    defaultConfig {
-        minSdkVersion 24
-        targetSdkVersion 34
-    }
-
-    packagingOptions {
-        exclude 'LICENSE.txt'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE'
-    }
-
-    sourceSets {
-        main {
-            manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = [
-                    'src',
-                    'core/src',
-                    'modules/google_cast/src',
-                    'modules/firetv/src',
-            ]
-            resources.srcDirs = ['src']
-            aidl.srcDirs = ['src']
-            renderscript.srcDirs = ['src']
-            res.srcDirs = ['core/res']
-            assets.srcDirs = ['assets']
-            jniLibs.srcDirs = ['core/jniLibs']
-        }
-        test {
-            java.srcDirs = [
-                    'core/test/src',
-                    'modules/google_cast/test/src',
-                    'modules/firetv/test/src',
-            ]
-        }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
-    }
-
-    lintOptions {
-        abortOnError false
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    useLibrary 'org.apache.http.legacy'
-}
-
-dependencies {
-    implementation project(':core')
-
-    // Orijinal bağımlılıkları koruyalım, versiyonları güncelleyelim
-    implementation 'androidx.mediarouter:mediarouter:1.8.1'
-    implementation 'androidx.annotation:annotation:1.9.1'
-    implementation 'androidx.preference:preference:1.2.1'
-    implementation 'androidx.appcompat:appcompat:1.7.1'
-    implementation 'com.googlecode.plist:dd-plist:1.28'
-    implementation 'com.nimbusds:srp6a:2.1.0'
-    implementation 'net.i2p.crypto:eddsa:0.3.0'
-    implementation 'com.google.android.gms:play-services-cast-framework:22.1.0'
-    implementation 'org.jmdns:jmdns:3.6.2'
-    implementation 'org.java-websocket:Java-WebSocket:1.5.7'
-    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.mockito:mockito-core:4.11.0'
-    testImplementation 'org.robolectric:robolectric:4.10.3'
-    testImplementation 'androidx.test:core:1.5.0'
-    testImplementation 'org.powermock:powermock-api-mockito:1.6.2'
-    testImplementation 'xmlunit:xmlunit:1.6'
-
-    // JAR dosyalarını libs klasöründen okumaya devam etsin
-    implementation files('core/libs/lgcast-android-lib.jar')
-    implementation fileTree(dir: 'modules/firetv/libs', include: ['*.jar'])
+ext {
+    localMavenRepo = "$rootDir/repo"
 }
