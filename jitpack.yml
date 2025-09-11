@@ -1,5 +1,5 @@
 jdk:
-  - openjdk17
+- openjdk17
 
 install:
-  - ./gradlew clean install -x test -x lint -Pgroup=com.github.Astro-bosss -Pversion=$JITPACK_TAG
+- ./gradlew clean build publishToMavenLocal -x test -x lint -Pgroup=com.github.Astro-bosss -Pversion=$JITPACK_TAG
