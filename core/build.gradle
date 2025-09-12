@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
+
+android {
+    namespace 'com.connectsdk'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 34
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.1.0"
+    implementation "org.java-websocket:Java-WebSocket:1.5.7"
+    implementation "org.jmdns:jmdns:3.5.9"
+    implementation "androidx.preference:preference:1.2.1"
+    implementation "com.google.android.gms:play-services-cast-framework:21.4.0"
+    implementation "com.googlecode.plist:dd-plist:1.28"
+    implementation "com.nimbusds:srp6a:2.1.0"
+    implementation "net.i2p.crypto:eddsa:0.3.0"
+    implementation 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = "com.github.Astro-bosss"
+                artifactId = "core" // Kütüphane modülünüzün adı
+                version = project.findProperty("version") ?: "1.0.0-SNAPSHOT"
+            }
+        }
+    }
+}
