@@ -1,5 +1,8 @@
 jdk:
 - openjdk17
 
+before_install:
+  - git submodule update --init --recursive
+
 install:
   - ./gradlew clean :core:publishToMavenLocal -x test -x lint
