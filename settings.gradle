@@ -1,3 +1,20 @@
-rootProject.name = "Connect-SDK-Android"
+// settings.gradle
 
-include(":core")
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" } // Jitpack'i buraya da eklemek iyi bir pratiktir
+    }
+}
+
+rootProject.name = "Connect-SDK-Android"
+include ':core' // Projemizin ana modülünün 'core' olduğunu belirtiyoruz
