@@ -1,3 +1,7 @@
+// build.gradle (Ana Dizin)
+
+// 'apply false' sayesinde bu eklentiler burada uygulanmaz, sadece versiyonları tanımlanır.
+// Gerçek uygulama, modülün kendi build.gradle dosyasında yapılır.
 plugins {
     id 'com.android.library' version '8.2.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.9.22' apply false

@@ -12,9 +12,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url "https://jitpack.io" } // Jitpack'i buraya da eklemek iyi bir pratiktir
+        maven { url "https://jitpack.io" }
     }
 }
 
 rootProject.name = "Connect-SDK-Android"
-include ':core' // Projemizin ana modülünün 'core' olduğunu belirtiyoruz
+include ':core'
